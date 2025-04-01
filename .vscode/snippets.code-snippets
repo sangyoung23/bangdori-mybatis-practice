@@ -1,0 +1,35 @@
+{
+    "Basic React Component": {
+        "prefix": "!basicComp",
+        "body": [
+            "import React from 'react';",
+            "",
+            "// ✅ 타입 선언",
+            "",
+            "const ${1:ComponentName} = () => {",
+            "// ✅ 상태 (State) 관리",
+            "",
+            "",
+            "",
+            "// ✅ 훅 사용 (Alert 등)",
+            "",
+            "",
+            "",
+            "// ✅ 사이드 이펙트 (useEffect 등)",
+            "",
+            "",
+            "",
+            "// ✅ 함수",
+            "",
+            "  return (",
+            "    <div>",
+            "      {/* ✅ JSX */}",
+            "    </div>",
+            "  );",
+            "};",
+            "",
+            "export default ${1:ComponentName};"
+        ],
+        "description": "Creates a basic React functional component with TypeScript annotations and hooks."
+    }
+}
