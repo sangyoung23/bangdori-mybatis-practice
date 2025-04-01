@@ -1,0 +1,9 @@
+.ag-header-cell-label {
+    justify-content: center !important;
+}
+
+@media (max-width: 768px) {
+    .ag-theme-quartz .ag-paging-panel {
+        display: none;
+    }
+}
