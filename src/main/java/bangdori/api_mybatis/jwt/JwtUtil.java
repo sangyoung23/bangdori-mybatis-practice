@@ -51,7 +51,7 @@ public class JwtUtil {
     }
 
     // 토큰 검증하는 메소드
-    public void validateToken(String token) {
+    public boolean validateToken(String token) {
         try {
             // JWT 토큰을 최종적으로 검증하는 코드
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
@@ -64,6 +64,8 @@ public class JwtUtil {
         } catch (IllegalArgumentException e) {
             throw new JwtException("JWT 클레임이 비어 있습니다.", e);
         }
+
+        return false;
     }
 
 }
