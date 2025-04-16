@@ -14,7 +14,7 @@ public class UserDetailService implements UserDetailsService {
     private final UserMapper userMapper;
 
     @Override
-    public org.springframework.security.core.userdetails.UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(String username) {
         UserInfoVO userInfo = userMapper.selectUserInfo(username);
 
         if (userInfo == null) {
