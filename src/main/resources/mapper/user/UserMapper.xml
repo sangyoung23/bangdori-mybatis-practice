@@ -5,8 +5,10 @@
 
 <mapper namespace="bangdori.api_mybatis.user.mapper.UserMapper">
 
-    <select id="selectUserInfo" resultType="bangdori.api_mybatis.user.vo.UserInfoVO">
+    <select id="selectUserInfo" parameterType="String" resultType="bangdori.api_mybatis.user.vo.UserInfoVO">
         SELECT * FROM TB_USER_INFO WHERE ID = #{username}
     </select>
 
 </mapper>
+
+
