@@ -1,4 +1,4 @@
-package bangdori.api_mybatis.jwt;
+package bangdori.api_mybatis.comm.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

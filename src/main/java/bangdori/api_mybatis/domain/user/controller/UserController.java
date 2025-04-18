@@ -1,9 +1,9 @@
-package bangdori.api_mybatis.user.controller;
+package bangdori.api_mybatis.domain.user.controller;
 
-import bangdori.api_mybatis.comm.ApiResponse;
-import bangdori.api_mybatis.jwt.JwtUtil;
-import bangdori.api_mybatis.user.dto.LoginRequestDto;
-import bangdori.api_mybatis.user.service.impl.UserDetails;
+import bangdori.api_mybatis.comm.response.ApiResponse;
+import bangdori.api_mybatis.comm.jwt.JwtUtil;
+import bangdori.api_mybatis.domain.user.service.impl.UserDetails;
+import bangdori.api_mybatis.domain.user.dto.LoginRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

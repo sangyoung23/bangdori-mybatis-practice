@@ -1,6 +1,6 @@
-package bangdori.api_mybatis.user.mapper;
+package bangdori.api_mybatis.domain.user.mapper;
 
-import bangdori.api_mybatis.user.vo.UserInfoVO;
+import bangdori.api_mybatis.domain.user.vo.UserInfoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
-package bangdori.api_mybatis.jwt;
+package bangdori.api_mybatis.comm.jwt;
 
-import bangdori.api_mybatis.user.service.impl.UserDetailService;
-import bangdori.api_mybatis.user.service.impl.UserDetails;
+import bangdori.api_mybatis.domain.user.service.impl.UserDetailService;
+import bangdori.api_mybatis.domain.user.service.impl.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

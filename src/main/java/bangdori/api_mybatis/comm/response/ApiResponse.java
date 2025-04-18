@@ -1,4 +1,4 @@
-package bangdori.api_mybatis.comm;
+package bangdori.api_mybatis.comm.response;
 
 import lombok.Getter;
 import lombok.Setter;

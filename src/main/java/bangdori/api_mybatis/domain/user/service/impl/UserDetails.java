@@ -1,6 +1,6 @@
-package bangdori.api_mybatis.user.service.impl;
+package bangdori.api_mybatis.domain.user.service.impl;
 
-import bangdori.api_mybatis.user.vo.UserInfoVO;
+import bangdori.api_mybatis.domain.user.vo.UserInfoVO;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

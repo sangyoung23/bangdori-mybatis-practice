@@ -1,4 +1,4 @@
-package bangdori.api_mybatis.user.vo;
+package bangdori.api_mybatis.domain.user.vo;
 
 import lombok.Getter;
 import lombok.Setter;
