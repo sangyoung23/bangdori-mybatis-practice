@@ -15,17 +15,17 @@ public class UserDetails implements org.springframework.security.core.userdetail
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(user.getROLE_CD()));
+        return List.of(new SimpleGrantedAuthority(user.getRoleCd()));
     }
 
     @Override
     public String getPassword() {
-        return user.getPWD();
+        return user.getPwd();
     }
 
     @Override
     public String getUsername() {
-        return user.getNAME();
+        return user.getId();
     }
 
     @Override
@@ -35,7 +35,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
 
     @Override
     public boolean isAccountNonLocked() {
-        return !user.getSTATUS_CD().equals("LOCKED");
+        return true;
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
 
     @Override
     public boolean isEnabled() {
-        return user.getSTATUS_CD().equals("ACTIVE");
+        return user.getStatusCd().equals("20");
     }
 }
 
