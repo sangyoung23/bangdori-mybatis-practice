@@ -6,7 +6,22 @@
 <mapper namespace="bangdori.api_mybatis.user.mapper.UserMapper">
 
     <select id="selectUserInfo" parameterType="String" resultType="bangdori.api_mybatis.user.vo.UserInfoVO">
-        SELECT * FROM TB_USER_INFO WHERE ID = #{username}
+        SELECT
+            u.user_no,
+            u.corp_no,
+            u.role_cd,
+            u.status_cd,
+            u.id,
+            u.pwd,
+            u.name,
+            u.phone_no,
+            c.corp_nm
+        FROM
+            tb_user_info u
+        LEFT JOIN
+            tb_corp_info c ON u.corp_no = c.corp_no
+        WHERE
+            u.id = #{username}
     </select>
 
 </mapper>

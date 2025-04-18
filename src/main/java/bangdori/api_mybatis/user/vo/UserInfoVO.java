@@ -6,12 +6,13 @@ import lombok.Setter;
 @Getter @Setter
 public class UserInfoVO {
 
-    private Long USER_NO;
-    private Long CORP_NO;
-    private String ROLE_CD;
-    private String STATUS_CD;
-    private String ID;
-    private String PWD;
-    private String NAME;
-    private String PHONE_NO;
+    private Long userNo;
+    private Long corpNo;
+    private String corpNm;
+    private String roleCd;
+    private String statusCd;
+    private String id;
+    private String pwd;
+    private String name;
+    private String phoneNo;
 }
