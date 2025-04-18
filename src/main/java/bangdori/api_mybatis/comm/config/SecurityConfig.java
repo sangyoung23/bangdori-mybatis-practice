@@ -1,6 +1,6 @@
-package bangdori.api_mybatis.config;
+package bangdori.api_mybatis.comm.config;
 
-import bangdori.api_mybatis.jwt.JwtFilter;
+import bangdori.api_mybatis.comm.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

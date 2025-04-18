@@ -1,4 +1,4 @@
-package bangdori.api_mybatis.jwt;
+package bangdori.api_mybatis.comm.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -55,6 +55,7 @@ public class JwtUtil {
         try {
             // JWT 토큰을 최종적으로 검증하는 코드
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
+            return true;
         } catch (SecurityException | MalformedJwtException e) {
             throw new JwtException("잘못된 JWT 서명입니다.", e);
         } catch (ExpiredJwtException e) {
@@ -64,8 +65,6 @@ public class JwtUtil {
         } catch (IllegalArgumentException e) {
             throw new JwtException("JWT 클레임이 비어 있습니다.", e);
         }
-
-        return false;
     }
 
 }

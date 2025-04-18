@@ -1,7 +1,7 @@
-package bangdori.api_mybatis.user.service.impl;
+package bangdori.api_mybatis.domain.user.service.impl;
 
-import bangdori.api_mybatis.user.mapper.UserMapper;
-import bangdori.api_mybatis.user.vo.UserInfoVO;
+import bangdori.api_mybatis.domain.user.mapper.UserMapper;
+import bangdori.api_mybatis.domain.user.vo.UserInfoVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
