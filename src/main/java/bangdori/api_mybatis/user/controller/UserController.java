@@ -1,9 +1,10 @@
 package bangdori.api_mybatis.user.controller;
 
+import bangdori.api_mybatis.comm.ApiResponse;
 import bangdori.api_mybatis.jwt.JwtUtil;
 import bangdori.api_mybatis.user.dto.LoginRequestDto;
+import bangdori.api_mybatis.user.service.impl.UserDetails;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,17 +20,27 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
+    private final ApiResponse apiResponse;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequestDto request) {
+    public ApiResponse login(@RequestBody LoginRequestDto request) {
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getId(), request.getPassword())
         );
 
+        // getPrincipal()는 구현체 즉 UserInfoVO 값들이 들어있음
+        UserDetails userInfo = (UserDetails) auth.getPrincipal();
         String token = jwtUtil.generateToken(request.getId());
 
-        return ResponseEntity.ok().body(Map.of("token", token));
+        return apiResponse.addResult(Map.of(
+                "token", token,
+                "userNo", userInfo.getUser().getUserNo(),
+                "userId", userInfo.getUser().getId(),
+                "username", userInfo.getUser().getName(),
+                "corpNo", userInfo.getUser().getCorpNo(),
+                "corpNm", userInfo.getUser().getCorpNm()
+        ));
     }
 }
