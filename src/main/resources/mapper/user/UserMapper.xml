@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="bangdori.api_mybatis.user.mapper.UserMapper">
+<mapper namespace="bangdori.api_mybatis.domain.user.mapper.UserMapper">
 
-    <select id="selectUserInfo" parameterType="String" resultType="bangdori.api_mybatis.user.vo.UserInfoVO">
+    <select id="selectUserInfo" parameterType="String" resultType="bangdori.api_mybatis.domain.user.vo.UserInfoVO">
         SELECT
             u.user_no,
             u.corp_no,
