@@ -1,6 +1,7 @@
 package bangdori.api_mybatis.user.service.impl;
 
 import bangdori.api_mybatis.user.vo.UserInfoVO;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
 @RequiredArgsConstructor
 public class UserDetails implements org.springframework.security.core.userdetails.UserDetails {
 
