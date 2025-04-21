@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bangdori.api_mybatis.domain.product.mapper.CodeMapper">
+
+    <select id="selectProducts" parameterType="Long" resultType="bangdori.api_mybatis.domain.product.vo.ProductVO">
+        SELECT
+            p.prod_no,
+            p.corp_no,
+            p.trade_type,
+            p.title,
+            p.type,
+            p.status_cd,
+            p.entrance_pwd,
+            p.unit_pwd,
+            p.phone_no1,
+            p.phone_no2,
+            p.unit_no,
+            p.etc,
+            p.deposit,
+            p.monthly_rent,
+            p.sale_price,
+            p.deposit_total,
+            p.rent_total,
+            p.premium_fee,
+            p.premium_yn,
+            p.direction_cd,
+            p.rcm_cd,
+            p.room_cd,
+            p.bath_cd,
+            p.move_in_cd,
+            p.prod_addr,
+            p.property_x,
+            p.property_y,
+            p.prod_road_addr,
+            p.prod_dtl_addr,
+            p.prod_mng_user,
+            p.new_dtm,
+            p.reg_user_id,
+            p.chg_user_id,
+            r.remark_cd
+        FROM
+            tb_product_info p
+        LEFT JOIN
+            tb_product_remarks_info r ON p.prod_no = r.prod_no
+        WHERE
+            p.corp_no = #{corpNo};
+    </select>
+
+</mapper>
+
+
