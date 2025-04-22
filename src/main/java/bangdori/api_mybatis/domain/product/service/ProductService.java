@@ -7,4 +7,6 @@ import java.util.List;
 public interface ProductService {
 
     List<ProductResponseDto> getProducts(Long corpNo) throws Exception;
+
+    void updateNewDtmAndUser(Long prodNo, Long userNo);
 }
