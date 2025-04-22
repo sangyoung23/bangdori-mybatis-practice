@@ -10,4 +10,6 @@ import java.util.List;
 public interface ProductMapper {
 
     List<ProductVO> selectProducts(@Param("corpNo") Long corpNo);
+
+    void updateNewDtmAndUser(@Param("prodNo") Long prodNo, @Param("userNo") Long userNo);
 }
