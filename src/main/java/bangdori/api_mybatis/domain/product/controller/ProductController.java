@@ -21,7 +21,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/products")
-    public ApiResponse getProducts(@RequestParam Long corpNo) throws Exception {
+    public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) throws Exception {
         List<ProductResponseDto> products = productService.getProducts(corpNo);
         return apiResponse.addResult("LIST", products);
     }
