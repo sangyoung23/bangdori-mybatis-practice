@@ -34,7 +34,6 @@ public class ApiResponse extends HashMap<String, Object> {
     public ApiResponse() {
         this.put(KEY_RESULT, result);
         this.put(KEY_MESSAGE, message);
-        this.success(); // 기본 성공 상태로 시작
     }
 
     public ApiResponse success() {

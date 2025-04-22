@@ -5,7 +5,7 @@
 
 <mapper namespace="bangdori.api_mybatis.domain.product.mapper.ProductMapper">
 
-    <select id="selectProducts" parameterType="Long" resultType="bangdori.api_mybatis.domain.product.vo.ProductVO">
+    <select id="selectProducts" resultType="bangdori.api_mybatis.domain.product.vo.ProductVO">
         SELECT
             p.prod_no,
             p.corp_no,
@@ -48,6 +48,17 @@
         WHERE
             p.corp_no = #{corpNo}
     </select>
+
+    <update id="updateNewDtmAndUser">
+        UPDATE tb_product_info
+        SET new_dtm = NOW(),
+            chg_user_id = (
+                SELECT user_no
+                FROM tb_user_info
+                WHERE user_no = #{userNo}
+            )
+        WHERE prod_no = #{prodNo};
+    </update>
 
 </mapper>
 

@@ -20,4 +20,9 @@ public class ProductService implements bangdori.api_mybatis.domain.product.servi
                 .map(ProductResponseDto::from)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void updateNewDtmAndUser(Long prodNo, Long userNo) {
+        productMapper.updateNewDtmAndUser(prodNo, userNo);
+    }
 }
