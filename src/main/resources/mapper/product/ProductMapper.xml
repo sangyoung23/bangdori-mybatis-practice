@@ -46,7 +46,7 @@
         LEFT JOIN
             tb_product_remarks_info r ON p.prod_no = r.prod_no
         WHERE
-            p.corp_no = #{corpNo};
+            p.corp_no = #{corpNo}
     </select>
 
     <update id="updateNewDtmAndUser">
