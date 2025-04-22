@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="bangdori.api_mybatis.domain.product.mapper.CodeMapper">
+<mapper namespace="bangdori.api_mybatis.domain.product.mapper.ProductMapper">
 
     <select id="selectProducts" parameterType="Long" resultType="bangdori.api_mybatis.domain.product.vo.ProductVO">
         SELECT
@@ -46,7 +46,7 @@
         LEFT JOIN
             tb_product_remarks_info r ON p.prod_no = r.prod_no
         WHERE
-            p.corp_no = #{corpNo};
+            p.corp_no = #{corpNo}
     </select>
 
 </mapper>

@@ -16,7 +16,7 @@ public class ProductService implements bangdori.api_mybatis.domain.product.servi
 
     @Override
     public List<ProductResponseDto> getProducts(Long corpNo) throws Exception {
-        return productMapper.selectProducts().stream()
+        return productMapper.selectProducts(corpNo).stream()
                 .map(ProductResponseDto::from)
                 .collect(Collectors.toList());
     }
