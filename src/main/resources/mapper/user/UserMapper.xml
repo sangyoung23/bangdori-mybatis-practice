@@ -24,6 +24,18 @@
             u.id = #{username}
     </select>
 
+    <update id="updateUserInfo" parameterType="bangdori.api_mybatis.domain.user.dto.UserUpdateRequestDto">
+        UPDATE
+            tb_user_info
+        SET
+            name = #{name},
+            phone_no = #{phoneNo},
+            pwd = #{pwd},
+            chg_dtm = NOW()
+        WHERE
+            user_no = #{userNo}
+    </update>
+
 </mapper>
 
 

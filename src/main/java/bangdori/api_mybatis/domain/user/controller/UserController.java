@@ -2,6 +2,8 @@ package bangdori.api_mybatis.domain.user.controller;
 
 import bangdori.api_mybatis.comm.response.ApiResponse;
 import bangdori.api_mybatis.comm.jwt.JwtUtil;
+import bangdori.api_mybatis.domain.user.dto.UserUpdateRequestDto;
+import bangdori.api_mybatis.domain.user.service.UserService;
 import bangdori.api_mybatis.domain.user.service.impl.UserDetails;
 import bangdori.api_mybatis.domain.user.dto.LoginRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,7 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
-    private final ApiResponse apiResponse;
+    private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
@@ -34,7 +36,7 @@ public class UserController {
         UserDetails userInfo = (UserDetails) auth.getPrincipal();
         String token = jwtUtil.generateToken(request.getId());
 
-        return apiResponse.addResult(Map.of(
+        return new ApiResponse().addResult(Map.of(
                 "token", token,
                 "userNo", userInfo.getUser().getUserNo(),
                 "userId", userInfo.getUser().getId(),
@@ -42,5 +44,11 @@ public class UserController {
                 "corpNo", userInfo.getUser().getCorpNo(),
                 "corpNm", userInfo.getUser().getCorpNm()
         ));
+    }
+
+    @PostMapping("/update/userInfo")
+    public ApiResponse updateUserInfo(@RequestBody UserUpdateRequestDto request) {
+        userService.updateUserInfo(request);
+        return new ApiResponse().success();
     }
 }
