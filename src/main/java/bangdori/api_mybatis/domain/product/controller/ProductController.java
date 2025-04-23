@@ -2,6 +2,7 @@ package bangdori.api_mybatis.domain.product.controller;
 
 
 import bangdori.api_mybatis.comm.response.ApiResponse;
+import bangdori.api_mybatis.domain.product.dto.ProductDeleteRequestDto;
 import bangdori.api_mybatis.domain.product.dto.ProductResponseDto;
 import bangdori.api_mybatis.domain.product.dto.ProductUpdateRequestDto;
 import bangdori.api_mybatis.domain.product.service.impl.ProductService;
@@ -37,6 +38,16 @@ public class ProductController {
             return apiResponse.success();
         } catch (Exception e) {
             return apiResponse.fail(VALUE_STATUS_RUNTIME_ERROR, "수정 실패: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/deleteProduct")
+    public ApiResponse deleteProduct(@RequestBody ProductDeleteRequestDto request) {
+        try {
+            productService.deleteProduct(request.getProdNo());
+            return apiResponse.success();
+        } catch (Exception e) {
+            return apiResponse.fail(VALUE_STATUS_RUNTIME_ERROR, "삭제 실패: " + e.getMessage());
         }
     }
 }
