@@ -11,43 +11,31 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static bangdori.api_mybatis.comm.response.ApiResponse.VALUE_STATUS_RUNTIME_ERROR;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/product")
 public class ProductController {
 
-    private final ApiResponse apiResponse;
     private final ProductService productService;
 
     @GetMapping("/products")
-    public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) throws Exception {
-        try {
+    public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) {
             List<ProductResponseDto> products = productService.getProducts(corpNo);
+            ApiResponse apiResponse = new ApiResponse();
             return apiResponse.addResult("LIST", products);
-        } catch (Exception e) {
-            return apiResponse.fail(VALUE_STATUS_RUNTIME_ERROR, "조회 실패: " + e.getMessage());
-        }
     }
 
     @PostMapping("/updateNewDtm")
     public ApiResponse updateNewDtmAndUser(@RequestBody ProductUpdateRequestDto request) {
-        try {
             productService.updateNewDtmAndUser(request.getProdNo(), request.getUserNo());
+            ApiResponse apiResponse = new ApiResponse();
             return apiResponse.success();
-        } catch (Exception e) {
-            return apiResponse.fail(VALUE_STATUS_RUNTIME_ERROR, "수정 실패: " + e.getMessage());
-        }
     }
 
     @PostMapping("/deleteProduct")
     public ApiResponse deleteProduct(@RequestBody ProductDeleteRequestDto request) {
-        try {
             productService.deleteProduct(request.getProdNo());
+            ApiResponse apiResponse = new ApiResponse();
             return apiResponse.success();
-        } catch (Exception e) {
-            return apiResponse.fail(VALUE_STATUS_RUNTIME_ERROR, "삭제 실패: " + e.getMessage());
-        }
     }
 }
