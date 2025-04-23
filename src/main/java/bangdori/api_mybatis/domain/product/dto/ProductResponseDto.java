@@ -100,7 +100,7 @@ public class ProductResponseDto {
                 .newDtm(productVO.getNewDtm())
                 .regUserId(productVO.getRegUserId())
                 .chgUserId(productVO.getChgUserId())
-//                .remarkCd()
+                .remarkCd(productVO.getRemarkCd())
                 .build();
     }
 

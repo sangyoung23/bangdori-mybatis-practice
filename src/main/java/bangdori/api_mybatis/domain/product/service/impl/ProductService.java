@@ -22,7 +22,12 @@ public class ProductService implements bangdori.api_mybatis.domain.product.servi
     }
 
     @Override
-    public void updateNewDtmAndUser(Long prodNo, Long userNo) {
+    public void updateNewDtmAndUser(Long prodNo, Long userNo) throws Exception {
         productMapper.updateNewDtmAndUser(prodNo, userNo);
+    }
+
+    @Override
+    public void deleteProduct(Long prodNo) throws Exception {
+        productMapper.deleteProduct(prodNo);
     }
 }
