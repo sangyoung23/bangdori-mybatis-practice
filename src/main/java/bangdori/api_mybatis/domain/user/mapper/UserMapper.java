@@ -1,5 +1,6 @@
 package bangdori.api_mybatis.domain.user.mapper;
 
+import bangdori.api_mybatis.domain.user.dto.UserUpdateRequestDto;
 import bangdori.api_mybatis.domain.user.vo.UserInfoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -8,4 +9,6 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
     UserInfoVO selectUserInfo(@Param("username") String username);
+
+    void updateUserInfo(UserUpdateRequestDto userUpdateRequestDto);
 }
