@@ -16,12 +16,11 @@ import java.util.Map;
 @RequestMapping("/comm/code")
 public class CodeController {
 
-    private final ApiResponse apiResponse;
     private final CodeService codeService;
 
     @GetMapping("/commCodes")
     public ApiResponse getCommCodes() throws Exception {
         Map<String, List<CodeResponseDto>> commCodes = codeService.getCommCodes();
-        return apiResponse.addResult("LIST", commCodes);
+        return new ApiResponse().addResult("LIST", commCodes);
     }
 }

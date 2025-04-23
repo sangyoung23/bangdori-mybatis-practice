@@ -21,21 +21,18 @@ public class ProductController {
     @GetMapping("/products")
     public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) {
             List<ProductResponseDto> products = productService.getProducts(corpNo);
-            ApiResponse apiResponse = new ApiResponse();
-            return apiResponse.addResult("LIST", products);
+            return new ApiResponse().addResult("LIST", products);
     }
 
     @PostMapping("/updateNewDtm")
     public ApiResponse updateNewDtmAndUser(@RequestBody ProductUpdateRequestDto request) {
             productService.updateNewDtmAndUser(request.getProdNo(), request.getUserNo());
-            ApiResponse apiResponse = new ApiResponse();
-            return apiResponse.success();
+            return new ApiResponse().success();
     }
 
     @PostMapping("/deleteProduct")
     public ApiResponse deleteProduct(@RequestBody ProductDeleteRequestDto request) {
             productService.deleteProduct(request.getProdNo());
-            ApiResponse apiResponse = new ApiResponse();
-            return apiResponse.success();
+            return new ApiResponse().success();
     }
 }
