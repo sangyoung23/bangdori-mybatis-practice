@@ -15,19 +15,19 @@ public class ProductService implements bangdori.api_mybatis.domain.product.servi
     private final ProductMapper productMapper;
 
     @Override
-    public List<ProductResponseDto> getProducts(Long corpNo) throws Exception {
+    public List<ProductResponseDto> getProducts(Long corpNo) {
         return productMapper.selectProducts(corpNo).stream()
                 .map(ProductResponseDto::from)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public void updateNewDtmAndUser(Long prodNo, Long userNo) throws Exception {
+    public void updateNewDtmAndUser(Long prodNo, Long userNo) {
         productMapper.updateNewDtmAndUser(prodNo, userNo);
     }
 
     @Override
-    public void deleteProduct(Long prodNo) throws Exception {
+    public void deleteProduct(Long prodNo) {
         productMapper.deleteProduct(prodNo);
     }
 }
