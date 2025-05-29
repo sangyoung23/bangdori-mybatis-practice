@@ -26,4 +26,4 @@ jwt:
   expiration: ${JWT_EXPIRATION}
 
 path:
-  images: "/OneDriver/바탕 화면/images"
+  images: "C:/my-images"
