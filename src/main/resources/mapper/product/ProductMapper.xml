@@ -83,31 +83,134 @@
         FROM
         tb_product_info p
         LEFT JOIN
-        tb_product_remarks_info r ON p.prod_no = r.prod_no
+        tb_product_remarks_info r
+        ON
+        p.prod_no = r.prod_no
         WHERE
         p.corp_no = #{corpNo}
-        AND p.use_yn = '1'
+        AND
+        p.use_yn = '1'
     </select>
 
     <update id="updateNewDtmAndUser">
-        UPDATE tb_product_info
-        SET new_dtm = NOW(),
+        UPDATE
+        tb_product_info
+        SET
+        new_dtm = NOW(),
         chg_user_id = (
-        SELECT user_no
-        FROM tb_user_info
-        WHERE user_no = #{userNo}
+        SELECT
+        user_no
+        FROM
+        tb_user_info
+        WHERE
+        user_no = #{userNo}
         )
-        WHERE prod_no = #{prodNo}
+        WHERE
+        prod_no = #{prodNo}
     </update>
 
-    <delete id="deleteProduct" parameterType="Long">
+    <update id="deleteProduct" parameterType="Long">
         UPDATE
-            tb_product_info
+        tb_product_info
         SET
-            use_yn = '0',
-            chg_dtm = NOW()
+        use_yn = '0',
+        chg_dtm = NOW()
         WHERE
-            prod_no = #{prodNo}
-    </delete>
+        prod_no = #{prodNo}
+    </update>
+
+    <insert id="insertProduct" parameterType="bangdori.api_mybatis.domain.product.dto.ProductRequestDto" useGeneratedKeys="true" keyProperty="prodNo">
+        INSERT INTO tb_product_info (
+        corp_no,
+        trade_type,
+        title,
+        type,
+        status_cd,
+        entrance_pwd,
+        unit_pwd,
+        phone_no1,
+        phone_no2,
+        unit_no,
+        etc,
+        deposit,
+        monthly_rent,
+        deposit_and_monthly_rent,
+        sale_pricd_and_depo_and_rent,
+        deposit_and_monthly_rent_and_pre_fee,
+        sale_price,
+        deposit_total,
+        rent_total,
+        premium_fee,
+        premium_yn,
+        direction_cd,
+        rcm_cd,
+        room_cd,
+        bath_cd,
+        move_in_cd,
+        prod_addr,
+        property_x,
+        property_y,
+        prod_road_addr,
+        prod_dtl_addr,
+        prod_mng_user,
+        new_dtm,
+        reg_user_id,
+        chg_user_id
+        ) VALUES (
+        #{corpNo},
+        #{tradeType},
+        #{title},
+        #{type},
+        #{statusCd},
+        #{entrancePwd},
+        #{unitPwd},
+        #{phoneNo1},
+        #{phoneNo2},
+        #{unitNo},
+        #{etc},
+        #{deposit},
+        #{monthlyRent},
+        #{depositAndMonthlyRent},
+        #{salePricdAndDepoAndRent},
+        #{depositAndMonthlyRentAndPreFee},
+        #{salePrice},
+        #{depositTotal},
+        #{rentTotal},
+        #{premiumFee},
+        #{premiumYn},
+        #{directionCd},
+        #{rcmCd},
+        #{roomCd},
+        #{bathCd},
+        #{moveInCd},
+        #{prodAddr},
+        #{propertyX},
+        #{propertyY},
+        #{prodRoadAddr},
+        #{prodDtlAddr},
+        #{prodMngUser},
+        #{newDtm},
+        #{regUserId},
+        #{chgUserId}
+        )
+    </insert>
+
+    <insert id="insertRemarks" parameterType="map">
+        <foreach collection="remarkList" item="remark" separator=";">
+            INSERT INTO tb_product_remarks_info
+            (prod_no, use_yn, remark_cd, reg_dtm)
+            VALUES
+            (#{remark.prodNo}, #{remark.useYn}, #{remark.remarkCd}, #{remark.regDtm})
+        </foreach>
+    </insert>
+
+    <insert id="insertImages" parameterType="map">
+        <foreach collection="imageList" item="image" separator=";">
+            INSERT INTO tb_product_img_info
+            (prod_no, mng_file_nm, real,file_nm, use_yn, reg_dtm)
+            VALUES
+            (#{image.prodNo}, #{image.mngFileNm}, #{image.realFileNm}, #{image.useYn}, #{image.regDtm})
+        </foreach>
+    </insert>
 
 </mapper>
