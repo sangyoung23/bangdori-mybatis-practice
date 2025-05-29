@@ -39,10 +39,10 @@ public class ProductController {
     }
 
     @PostMapping("/addProdReg")
-    public ApiResponse addProdErg(@RequestPart("productDto") ProductRequestDto productDto,
+    public ApiResponse createProduct(@RequestPart("productDto") ProductRequestDto productDto,
                                   @RequestPart("remarkCds") List<String> remarkCds,
-                                  @RequestPart("imges")List<MultipartFile> imges) {
-            productService.addProduct(productDto, remarkCds, imges);
+                                  @RequestPart("images")List<MultipartFile> images) {
+            productService.createProduct(productDto, remarkCds, images);
             return new ApiResponse().success();
     }
 }
