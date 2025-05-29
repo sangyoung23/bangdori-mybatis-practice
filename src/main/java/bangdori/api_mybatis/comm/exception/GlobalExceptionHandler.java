@@ -42,10 +42,11 @@ public class GlobalExceptionHandler {
     }
 
 
-    // 필요하면 사용자 정의 예외도 따로 처리 가능
-//    @ExceptionHandler(CustomException.class)
-//    public ApiResponse handleCustomException(CustomException e) {
-//        return new ApiResponse()
-//                .fail(e.getCode(), e.getMessage());
-//    }
+    // 파일 저장 실패 처리
+    @ExceptionHandler(FileStorageException.class)
+    public ApiResponse handleFileStorageException(FileStorageException e) {
+        return new ApiResponse()
+                .fail(VALUE_STATUS_RUNTIME_ERROR, "파일 저장 중 오류가 발생했습니다.")
+                .setTrace(e.getMessage());
+    }
 }
