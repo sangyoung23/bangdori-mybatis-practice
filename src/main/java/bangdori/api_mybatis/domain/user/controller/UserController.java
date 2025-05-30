@@ -10,23 +10,20 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
 
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ApiResponse login(@RequestBody LoginRequestDto request) {
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getId(), request.getPassword())
@@ -36,7 +33,9 @@ public class UserController {
         UserDetails userInfo = (UserDetails) auth.getPrincipal();
         String token = jwtUtil.generateToken(request.getId());
 
-        return new ApiResponse().addResult(Map.of(
+        return new ApiResponse()
+                .success()
+                .addResult(Map.of(
                 "token", token,
                 "userNo", userInfo.getUser().getUserNo(),
                 "userId", userInfo.getUser().getId(),
@@ -46,8 +45,9 @@ public class UserController {
         ));
     }
 
-    @PostMapping("/update/userInfo")
-    public ApiResponse updateUserInfo(@RequestBody UserUpdateRequestDto request) {
+    @PutMapping("/{userNo}")
+    public ApiResponse updateUserInfo(@PathVariable Long userNo ,@RequestBody UserUpdateRequestDto request) {
+        request.setUserNo(userNo);
         userService.updateUserInfo(request);
         return new ApiResponse().success();
     }
