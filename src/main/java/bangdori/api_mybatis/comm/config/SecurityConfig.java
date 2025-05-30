@@ -34,7 +34,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/user/login").permitAll() // 설정한 endpoint를 제외한 모든 요청은 JWT 인증 필요
+                        .requestMatchers("/users/auth/login").permitAll() // 설정한 endpoint를 제외한 모든 요청은 JWT 인증 필요
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // JWT 기반 인증은 클라이언트에 모든 정보를 담기 때문에 세션 불필요
