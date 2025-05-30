@@ -13,14 +13,16 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/comm/code")
+@RequestMapping("/codes")
 public class CodeController {
 
     private final CodeService codeService;
 
-    @GetMapping("/commCodes")
+    @GetMapping("/grouped")
     public ApiResponse getCommCodes() throws Exception {
         Map<String, List<CodeResponseDto>> commCodes = codeService.getCommCodes();
-        return new ApiResponse().addResult("LIST", commCodes);
+        return new ApiResponse()
+                .success()
+                .addResult("LIST", commCodes);
     }
 }
