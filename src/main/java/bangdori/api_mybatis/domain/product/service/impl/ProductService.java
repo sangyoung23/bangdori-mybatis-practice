@@ -6,6 +6,7 @@ import bangdori.api_mybatis.domain.product.mapper.ProductMapper;
 import bangdori.api_mybatis.domain.product.vo.ProductImageVO;
 import bangdori.api_mybatis.domain.product.vo.ProductRemarkVO;
 import bangdori.api_mybatis.domain.product.vo.ProductVO;
+import bangdori.api_mybatis.domain.user.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,13 @@ public class ProductService implements bangdori.api_mybatis.domain.product.servi
         return productMapper.selectProducts(corpNo).stream()
                 .map(ProductResponseDto::from)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UserResponseDto> getUserList(Long userNo) {
+        return productMapper.selectUsers(userNo).stream()
+                .map(UserResponseDto::from)
+                .toList();
     }
 
     @Override

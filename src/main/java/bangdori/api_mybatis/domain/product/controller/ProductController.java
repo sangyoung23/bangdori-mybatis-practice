@@ -7,6 +7,7 @@ import bangdori.api_mybatis.domain.product.dto.ProductRequestDto;
 import bangdori.api_mybatis.domain.product.dto.ProductResponseDto;
 import bangdori.api_mybatis.domain.product.dto.ProductUpdateRequestDto;
 import bangdori.api_mybatis.domain.product.service.impl.ProductService;
+import bangdori.api_mybatis.domain.user.dto.UserResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,6 +27,14 @@ public class ProductController {
             return new ApiResponse()
                     .success()
                     .addResult("LIST", products);
+    }
+
+    @GetMapping("/users")
+    public ApiResponse getUserList(@RequestParam("userNo") Long userNo) {
+        List<UserResponseDto> userList = productService.getUserList(userNo);
+        return new ApiResponse()
+                .success()
+                .addResult("LIST", userList);
     }
 
     @PatchMapping("/{prodNo}/refresh")
