@@ -20,10 +20,12 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping()
+    @GetMapping
     public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) {
             List<ProductResponseDto> products = productService.getProducts(corpNo);
-            return new ApiResponse().addResult("LIST", products);
+            return new ApiResponse()
+                    .success()
+                    .addResult("LIST", products);
     }
 
     @PatchMapping("/{prodNo}/refresh")
@@ -40,8 +42,8 @@ public class ProductController {
 
     @PostMapping
     public ApiResponse createProduct(@RequestPart("productDto") ProductRequestDto productDto,
-                                  @RequestPart("remarkCds") List<String> remarkCds,
-                                  @RequestPart("images")List<MultipartFile> images) {
+                                  @RequestPart(value = "remarkCds", required = false) List<String> remarkCds,
+                                  @RequestPart(value = "images", required = false) List<MultipartFile> images) {
             productService.createProduct(productDto, remarkCds, images);
             return new ApiResponse().success();
     }
