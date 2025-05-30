@@ -92,6 +92,16 @@
         p.use_yn = '1'
     </select>
 
+    <select id="selectUsers" resultType="bangdori.api_mybatis.domain.user.vo.UserInfoVO" parameterType="Long">
+        SELECT
+            user_no,
+            name
+        FROM
+            tb_user_info
+        WHERE
+            user_no = #{userNo}
+    </select>
+
     <update id="updateNewDtmAndUser">
         UPDATE
         tb_product_info
