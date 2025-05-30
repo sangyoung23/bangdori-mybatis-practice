@@ -20,25 +20,25 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/products")
+    @GetMapping()
     public ApiResponse getProducts(@RequestParam("corpNo") Long corpNo) {
             List<ProductResponseDto> products = productService.getProducts(corpNo);
             return new ApiResponse().addResult("LIST", products);
     }
 
-    @PostMapping("/updateNewDtm")
+    @PatchMapping("/{prodNo}/refresh")
     public ApiResponse updateNewDtmAndUser(@RequestBody ProductUpdateRequestDto request) {
             productService.updateNewDtmAndUser(request.getProdNo(), request.getUserNo());
             return new ApiResponse().success();
     }
 
-    @PostMapping("/deleteProduct")
+    @DeleteMapping("/{prodNo}")
     public ApiResponse deleteProduct(@RequestBody ProductDeleteRequestDto request) {
             productService.deleteProduct(request.getProdNo());
             return new ApiResponse().success();
     }
 
-    @PostMapping("/addProdReg")
+    @PostMapping
     public ApiResponse createProduct(@RequestPart("productDto") ProductRequestDto productDto,
                                   @RequestPart("remarkCds") List<String> remarkCds,
                                   @RequestPart("images")List<MultipartFile> images) {
